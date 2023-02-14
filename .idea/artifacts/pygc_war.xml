@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pygc:war">
+    <output-path>$PROJECT_DIR$/pygc/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>pygc</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="pygc-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="pygc:war exploded" />
+    </root>
+  </artifact>
+</component>

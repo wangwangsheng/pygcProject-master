@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.xszx.dao.BaDao">
+    <select id="getBaByType" resultType="com.xszx.beans.Ba">
+        select * from xszx_pygc_ba where b_type=#{b_type}
+    </select>
+
+    <select id="getBaByBid" resultType="com.xszx.beans.Ba">
+        select * from xszx_pygc_ba where b_id=#{b_id}
+    </select>
+
+    <select id="getBaOrderPrice" resultType="com.xszx.beans.Ba">
+        select * from xszx_pygc_ba where b_type=#{b_type} order by b_price
+    </select>
+
+    <select id="getTicketByST" resultType="com.xszx.beans.Ba">
+        select * from xszx_pygc_ba where b_type=#{b_type} and b_st=#{b_st}
+    </select>
+
+    <select id="getBaByUid" resultMap="baResult">
+        select * from xszx_pygc_ba b
+        left join xszx_pygc_dict d on b.p_id=d.p_id
+        where u_id=#{u_id}
+    </select>
+    <resultMap id="baResult" type="com.xszx.beans.Ba">
+        <id column="b_id" property="b_id"></id>
+        <result column="b_name" property="b_name"/>
+        <result column="b_introduce" property="b_introduce"/>
+        <result column="b_image" property="b_image"/>
+
+        <collection property="dict" column="dict" ofType="com.xszx.beans.Dict">
+            <id column="d_id" property="d_id"/>
+            <result property="d_name" column="d_name"/>
+            <result property="value" column="value"></result>
+            <result property="p_id" column="p_id"></result>
+        </collection>
+    </resultMap>
+
+    <insert id="addBa" parameterType="com.xszx.beans.Ba">
+        insert into xszx_pygc_ba(b_id,u_id,b_name,b_introduce,b_price,b_type,b_image)
+        values (#{b_id},#{u_id},#{b_name},#{b_introduce},#{b_price},#{b_type},#{b_image})
+    </insert>
+</mapper>
