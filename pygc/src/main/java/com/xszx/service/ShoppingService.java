@@ -7,8 +7,6 @@ import java.util.List;
 public interface ShoppingService {
     List<Shopping> getshopping();
 
-
-    
     void updatesid2(int s_id);
 
     Shopping getshoppingamount(int s_id);

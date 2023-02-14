@@ -7,6 +7,8 @@ import java.util.Date;
  * @date 2023/2/9 10:35
  */
 public class User {
+
+   
    private int u_id;
    private String username;
    private String phone;
